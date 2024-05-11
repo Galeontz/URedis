@@ -17,7 +17,7 @@ class UREDIS_API FURedis final : public IModuleInterface {
   
   void Connect(const FStringView host, int32 port = 6379);
 
-  FString Ping(TOptional<FString> message) const;
+  FString Ping(TOptional<FString> message = NullOpt) const;
 
   private:
   TUniquePtr<sw::redis::Redis> _instance{};
