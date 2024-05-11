@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "URedis",
+	"Description": "Unreal Engine 5 Redis Plugin",
+	"Category": "Other",
+	"CreatedBy": "Paolo Galeone <nessuno@nerdz.eu> - Eli Lentz <feedapps.royal@gmail.com>",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "URedis",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
