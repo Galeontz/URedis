@@ -12,7 +12,7 @@ public class URedisLibrary : ModuleRules {
       var path = Path.Combine(ModuleDirectory, "linux", "x64", libname);
       PublicAdditionalLibraries.Add(path);
       RuntimeDependencies.Add(path);
-      
+
       libname = "libhiredis.so";
       path = Path.Combine(ModuleDirectory, "linux", "x64", libname);
       PublicAdditionalLibraries.Add(path);

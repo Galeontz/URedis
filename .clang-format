@@ -1,0 +1,12 @@
+---
+Language: Cpp
+BasedOnStyle: Google
+Standard: c++20
+IncludeBlocks: Preserve
+UseTab: Never
+IndentWidth: 4
+AccessModifierOffset: -4
+...
+---
+Language: CSharp
+...
