@@ -12,6 +12,7 @@ repos:
         files: '^.*\.(h|c|cpp|cs|md)$'
       - id: trailing-whitespace
         files: '^.*\.(h|c|cpp|cs|md)$'
+        exclude: '.*/ThirdParty/.*/include/.*'
       - id: check-json
         types: []
         files: '^.*\.(uproject|uplugin|json)$'

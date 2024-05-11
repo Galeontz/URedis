@@ -11,14 +11,14 @@ class Redis;
 }
 
 class UREDIS_API FURedis final : public IModuleInterface {
-  public:
-  // There's no need to override IModuleInterface
-  // StartupModule & ShutdownModule methods.
-  
-  void Connect(const FStringView host, int32 port = 6379);
+public:
+    // There's no need to override IModuleInterface
+    // StartupModule & ShutdownModule methods.
 
-  FString Ping(TOptional<FString> message = NullOpt) const;
+    void Connect(const FStringView host, int32 port = 6379);
 
-  private:
-  TUniquePtr<sw::redis::Redis> _instance{};
+    FString Ping(TOptional<FString> message = NullOpt) const;
+
+private:
+    TUniquePtr<sw::redis::Redis> _instance{};
 };
