@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_TRANSACTION_H
-#define SEWENEW_URedis_TRANSACTION_H
+#ifndef SEWENEW_REDISPLUSPLUS_TRANSACTION_H
+#define SEWENEW_REDISPLUSPLUS_TRANSACTION_H
 
 #include <cassert>
 #include <vector>
@@ -74,4 +74,4 @@ void TransactionImpl::command(Connection &connection, Cmd cmd, Args &&...args) {
 
 }
 
-#endif // end SEWENEW_URedis_TRANSACTION_H
+#endif // end SEWENEW_REDISPLUSPLUS_TRANSACTION_H

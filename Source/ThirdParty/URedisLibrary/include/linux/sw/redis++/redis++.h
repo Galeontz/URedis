@@ -14,12 +14,12 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_URedis_H
-#define SEWENEW_URedis_URedis_H
+#ifndef SEWENEW_REDISPLUSPLUS_REDISPLUSPLUS_H
+#define SEWENEW_REDISPLUSPLUS_REDISPLUSPLUS_H
 
 #include "sw/redis++/redis.h"
 #include "sw/redis++/redis_cluster.h"
 #include "sw/redis++/queued_redis.h"
 #include "sw/redis++/sentinel.h"
 
-#endif // end SEWENEW_URedis_URedis_H
+#endif // end SEWENEW_REDISPLUSPLUS_REDISPLUSPLUS_H

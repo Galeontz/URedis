@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_REDIS_CLUSTER_H
-#define SEWENEW_URedis_REDIS_CLUSTER_H
+#ifndef SEWENEW_REDISPLUSPLUS_REDIS_CLUSTER_H
+#define SEWENEW_REDISPLUSPLUS_REDIS_CLUSTER_H
 
 #include <string>
 #include <chrono>
@@ -1454,4 +1454,4 @@ private:
 
 #include "sw/redis++/redis_cluster.hpp"
 
-#endif // end SEWENEW_URedis_REDIS_CLUSTER_H
+#endif // end SEWENEW_REDISPLUSPLUS_REDIS_CLUSTER_H

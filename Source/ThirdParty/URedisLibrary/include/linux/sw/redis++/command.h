@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_COMMAND_H
-#define SEWENEW_URedis_COMMAND_H
+#ifndef SEWENEW_REDISPLUSPLUS_COMMAND_H
+#define SEWENEW_REDISPLUSPLUS_COMMAND_H
 
 #include <cassert>
 #include <ctime>
@@ -2299,4 +2299,4 @@ void zunionstore_range(Connection &connection,
 
 }
 
-#endif // end SEWENEW_URedis_COMMAND_H
+#endif // end SEWENEW_REDISPLUSPLUS_COMMAND_H

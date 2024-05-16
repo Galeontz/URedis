@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_CMD_FORMATTER_H
-#define SEWENEW_URedis_CMD_FORMATTER_H
+#ifndef SEWENEW_REDISPLUSPLUS_CMD_FORMATTER_H
+#define SEWENEW_REDISPLUSPLUS_CMD_FORMATTER_H
 
 #include <hiredis/hiredis.h>
 #include "sw/redis++/command_options.h"
@@ -869,4 +869,4 @@ inline FormattedCommand unsubscribe_range(Input first, Input last) {
 
 }
 
-#endif // end SEWENEW_URedis_CMD_FORMATTER_H
+#endif // end SEWENEW_REDISPLUSPLUS_CMD_FORMATTER_H

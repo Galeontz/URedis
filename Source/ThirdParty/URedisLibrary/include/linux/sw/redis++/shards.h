@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_SHARDS_H
-#define SEWENEW_URedis_SHARDS_H
+#ifndef SEWENEW_REDISPLUSPLUS_SHARDS_H
+#define SEWENEW_REDISPLUSPLUS_SHARDS_H
 
 #include <string>
 #include <map>
@@ -112,4 +112,4 @@ public:
 
 }
 
-#endif // end SEWENEW_URedis_SHARDS_H
+#endif // end SEWENEW_REDISPLUSPLUS_SHARDS_H

@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_REDIS_URI_H
-#define SEWENEW_URedis_REDIS_URI_H
+#ifndef SEWENEW_REDISPLUSPLUS_REDIS_URI_H
+#define SEWENEW_REDISPLUSPLUS_REDIS_URI_H
 
 #include <chrono>
 #include <string>
@@ -76,4 +76,4 @@ private:
 
 }
 
-#endif // end SEWENEW_URedis_REDIS_URI_H
+#endif // end SEWENEW_REDISPLUSPLUS_REDIS_URI_H

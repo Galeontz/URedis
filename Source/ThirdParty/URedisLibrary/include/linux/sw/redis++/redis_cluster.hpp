@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_REDIS_CLUSTER_HPP
-#define SEWENEW_URedis_REDIS_CLUSTER_HPP
+#ifndef SEWENEW_REDISPLUSPLUS_REDIS_CLUSTER_HPP
+#define SEWENEW_REDISPLUSPLUS_REDIS_CLUSTER_HPP
 
 #include <utility>
 #include "sw/redis++/command.h"
@@ -1401,4 +1401,4 @@ inline ReplyUPtr RedisCluster::_score_command(Cmd cmd, Args &&... args) {
 
 }
 
-#endif // end SEWENEW_URedis_REDIS_CLUSTER_HPP
+#endif // end SEWENEW_REDISPLUSPLUS_REDIS_CLUSTER_HPP

@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_CONNECTION_H
-#define SEWENEW_URedis_CONNECTION_H
+#ifndef SEWENEW_REDISPLUSPLUS_CONNECTION_H
+#define SEWENEW_REDISPLUSPLUS_CONNECTION_H
 
 #include <cassert>
 #include <cerrno>
@@ -233,4 +233,4 @@ inline redisContext* Connection::_context() {
 
 }
 
-#endif // end SEWENEW_URedis_CONNECTION_H
+#endif // end SEWENEW_REDISPLUSPLUS_CONNECTION_H

@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_CXX_UTILS_H
-#define SEWENEW_URedis_CXX_UTILS_H
+#ifndef SEWENEW_REDISPLUSPLUS_CXX_UTILS_H
+#define SEWENEW_REDISPLUSPLUS_CXX_UTILS_H
 
 #include <string_view>
 #include <type_traits>
@@ -47,4 +47,4 @@ using IsInvocable = std::is_invocable<F, Args...>;
 
 }
 
-#endif // end SEWENEW_URedis_CXX_UTILS_H
+#endif // end SEWENEW_REDISPLUSPLUS_CXX_UTILS_H

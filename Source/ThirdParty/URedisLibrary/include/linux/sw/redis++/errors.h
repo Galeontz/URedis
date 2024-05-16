@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_ERRORS_H
-#define SEWENEW_URedis_ERRORS_H
+#ifndef SEWENEW_REDISPLUSPLUS_ERRORS_H
+#define SEWENEW_REDISPLUSPLUS_ERRORS_H
 
 #include <exception>
 #include <string>
@@ -163,4 +163,4 @@ inline void range_check(const char *cmd, Input first, Input last) {
 
 }
 
-#endif // end SEWENEW_URedis_ERRORS_H
+#endif // end SEWENEW_REDISPLUSPLUS_ERRORS_H

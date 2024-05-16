@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_QUEUED_REDIS_H
-#define SEWENEW_URedis_QUEUED_REDIS_H
+#ifndef SEWENEW_REDISPLUSPLUS_QUEUED_REDIS_H
+#define SEWENEW_REDISPLUSPLUS_QUEUED_REDIS_H
 
 #include <cassert>
 #include <chrono>
@@ -2041,4 +2041,4 @@ private:
 
 #include "sw/redis++/queued_redis.hpp"
 
-#endif // end SEWENEW_URedis_QUEUED_REDIS_H
+#endif // end SEWENEW_REDISPLUSPLUS_QUEUED_REDIS_H

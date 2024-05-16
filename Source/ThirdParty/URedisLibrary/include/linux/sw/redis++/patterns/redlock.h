@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_RECIPES_REDLOCK_H
-#define SEWENEW_URedis_RECIPES_REDLOCK_H
+#ifndef SEWENEW_REDISPLUSPLUS_RECIPES_REDLOCK_H
+#define SEWENEW_REDISPLUSPLUS_RECIPES_REDLOCK_H
 
 #include <cassert>
 #include <random>
@@ -601,4 +601,4 @@ private:
 
 }
 
-#endif // end SEWENEW_URedis_RECIPES_REDLOCK_H
+#endif // end SEWENEW_REDISPLUSPLUS_RECIPES_REDLOCK_H

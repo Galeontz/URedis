@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_SUBSCRIBER_H
-#define SEWENEW_URedis_SUBSCRIBER_H
+#ifndef SEWENEW_REDISPLUSPLUS_SUBSCRIBER_H
+#define SEWENEW_REDISPLUSPLUS_SUBSCRIBER_H
 
 #include <unordered_map>
 #include <string>
@@ -227,4 +227,4 @@ void Subscriber::punsubscribe(Input first, Input last) {
 
 }
 
-#endif // end SEWENEW_URedis_SUBSCRIBER_H
+#endif // end SEWENEW_REDISPLUSPLUS_SUBSCRIBER_H
