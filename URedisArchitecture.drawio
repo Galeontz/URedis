@@ -1,9 +1,103 @@
-<mxfile host="app.diagrams.net" modified="2024-05-16T14:49:35.007Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" version="24.4.2" etag="mt1sl5FVnLqE_dlb4q70" type="github">
+<mxfile host="app.diagrams.net" modified="2024-05-17T09:13:54.608Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="biOzKTMy7x0tKH8L4Sn4" version="24.4.2" type="github">
   <diagram name="Page-1" id="NUPCw-poZWyuYIeeie42">
-    <mxGraphModel>
+    <mxGraphModel dx="1184" dy="674" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="54o5HclIAbrZHuZqbWuN-14" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;URedis&lt;/h1&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="250" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-30" value="&lt;b&gt;Connect&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-31" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="54o5HclIAbrZHuZqbWuN-30">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-32" value="General" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=130;height=30;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="790" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-33" value="&lt;b&gt;&lt;a href=&quot;https://redis.io/docs/latest/commands/keys/&quot;&gt;Keys&lt;/a&gt;&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="80" y="440" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-34" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="54o5HclIAbrZHuZqbWuN-33">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-35" value="&lt;b&gt;&lt;a href=&quot;https://redis.io/docs/latest/commands/sort/&quot;&gt;Sort&lt;/a&gt;&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="480" y="440" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-36" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="54o5HclIAbrZHuZqbWuN-35">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-37" value="&lt;b&gt;&lt;a href=&quot;https://redis.io/docs/latest/commands/subscribe/&quot;&gt;Subscibe&lt;/a&gt;&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="80" y="640" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-38" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="54o5HclIAbrZHuZqbWuN-37">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-39" value="&lt;b&gt;&lt;a href=&quot;https://redis.io/docs/latest/commands/set/&quot;&gt;Set&lt;/a&gt;&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="80" y="320" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-40" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="54o5HclIAbrZHuZqbWuN-39">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="https://redis.io/docs/latest/commands/" link="https://redis.io/docs/latest/commands/" id="54o5HclIAbrZHuZqbWuN-44">
+          <mxCell style="text;whiteSpace=wrap;fontColor=#3399FF;" vertex="1" parent="1">
+            <mxGeometry x="40" y="120" width="230" height="30" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-45" value="&lt;b&gt;&lt;a href=&quot;https://redis.io/docs/latest/commands/unsubscribe/&quot;&gt;Unsubscribe&lt;/a&gt;&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="280" y="640" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-46" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="54o5HclIAbrZHuZqbWuN-45">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-47" value="&lt;b&gt;&lt;a href=&quot;https://redis.io/docs/latest/commands/del/&quot;&gt;Delete&lt;/a&gt;&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="280" y="320" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-48" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="54o5HclIAbrZHuZqbWuN-47">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-49" value="&lt;b&gt;&lt;a href=&quot;https://redis.io/docs/latest/commands/dbsize/&quot;&gt;DBSize&lt;/a&gt;&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="280" y="440" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-50" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="54o5HclIAbrZHuZqbWuN-49">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-52" value="Pub/Sub" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=110;height=30;" vertex="1" parent="1">
+          <mxGeometry x="40" y="600" width="790" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-53" value="&lt;b&gt;&lt;a href=&quot;https://redis.io/docs/latest/commands/publish/&quot;&gt;Publish&lt;/a&gt;&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="80" y="760" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-54" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="54o5HclIAbrZHuZqbWuN-53">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-57" value="&lt;b&gt;Ping&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="280" y="200" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="54o5HclIAbrZHuZqbWuN-58" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="54o5HclIAbrZHuZqbWuN-57">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
