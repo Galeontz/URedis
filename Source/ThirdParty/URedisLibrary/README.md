@@ -11,3 +11,50 @@ The version used are:
 
 - redis-plus-plus: 1.3.10
 - hiredis: v1.2.0
+
+## Linux Compilation
+
+Refer to: https://pgaleone.eu/2023/06/18/unreal-engine-third-party-linux-sysroot-dependencies/
+
+### Hiredis
+
+```bash
+# Hiredis
+git clone git@github.com:redis/hiredis.git
+cd hiredis
+git checkout v1.2.0
+mkdir build
+cd build
+cmake ..
+make -j$(nproc)
+mkdir /tmp/hr
+make DESTDIR=/tmp/hr install
+```
+
+### Redis Plus Plus
+
+```bash
+git clone https://github.com/sewenew/redis-plus-plus.git
+cd redis-plus-plus
+git checkout 1.3.10
+mkdir build
+
+cat <<EOF > UEToolchain.cmake.sh
+set(ENGINE "/home/pgaleone/ue/engine/")
+
+set(CMAKE_SYSROOT "${ENGINE}/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/")
+set(CMAKE_C_COMPILER "${ENGINE}/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang")
+set(CMAKE_CXX_COMPILER "${ENGINE}/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -nostdinc++ -I${ENGINE}/Engine/Source/ThirdParty/Unix/LibCxx/include/ -I${ENGINE}/Engine/Source/ThirdParty/Unix/LibCxx/include/c++/v1/")
+
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+EOF
+
+cd build
+cmake -DCMAKE_TOOLCHAIN_FILE=../UEToolchain.cmake -DREDIS_PLUS_PLUS_BUILD_TEST=OFF ..
+make -j$(nproc)
+mkdir /tmp/rd
+make DESTDIR=/tmp/rd install
+```
+
+In the DESTDIR folders you'll find the headers and libraries ready to be copied in the plugin.
