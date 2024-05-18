@@ -2,40 +2,32 @@ using System.IO;
 using UnrealBuildTool;
 
 public class URedisLibrary : ModuleRules {
-  public URedisLibrary(ReadOnlyTargetRules Target) : base(Target) {
+  public URedisLibrary(ReadOnlyTargetRules target) : base(target) {
     Type = ModuleType.External;
 
-    if (Target.Platform == UnrealTargetPlatform.Linux) {
-      PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "include", "linux"));
+    PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "include"));
 
-      var libname = "libredis++.so";
-      var path = Path.Combine(ModuleDirectory, "linux", "x64", libname);
+    if (target.Platform == UnrealTargetPlatform.Linux) {
+      // hiredis
+      var path = Path.Combine(ModuleDirectory, "linux", "x64", "libredis++.so");
       PublicAdditionalLibraries.Add(path);
       RuntimeDependencies.Add(path);
 
-      libname = "libhiredis.so";
-      path = Path.Combine(ModuleDirectory, "linux", "x64", libname);
+      // redis++
+      path = Path.Combine(ModuleDirectory, "linux", "x64", "libhiredis.so");
       PublicAdditionalLibraries.Add(path);
       RuntimeDependencies.Add(path);
-    } else if (Target.Platform == UnrealTargetPlatform.Win64) {
-      PublicIncludePaths.Add(
-          Path.Combine(ModuleDirectory, "include", "windows"));
-
-      var libName = "hiredis.lib";
-      var dllName = "hiredis.dll";
-
+    } else if (target.Platform == UnrealTargetPlatform.Win64) {
+      // hiredis
       PublicAdditionalLibraries.Add(
-          Path.Combine(ModuleDirectory, "windows", "x64", libName));
+          Path.Combine(ModuleDirectory, "windows", "x64", "hiredis.lib"));
       RuntimeDependencies.Add(
-          Path.Combine(PluginDirectory, "Binaries", "Win64", dllName));
-
-      libName = "redis++.lib";
-      dllName = "redis++.dll";
-
+          Path.Combine(PluginDirectory, "Binaries", "Win64", "hiredis.dll"));
+      // redis++
       PublicAdditionalLibraries.Add(
-          Path.Combine(ModuleDirectory, "windows", "x64", libName));
+          Path.Combine(ModuleDirectory, "windows", "x64", "redis++.lib"));
       RuntimeDependencies.Add(
-          Path.Combine(PluginDirectory, "Binaries", "Win64", dllName));
+          Path.Combine(PluginDirectory, "Binaries", "Win64", "redis++.dll"));
     }
   }
 }
