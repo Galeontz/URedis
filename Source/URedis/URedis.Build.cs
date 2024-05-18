@@ -6,6 +6,9 @@ public class URedis : ModuleRules {
 
     DefaultBuildSettings = BuildSettingsVersion.V5;
 
-    PublicDependencyModuleNames.AddRange(new[] { "Core", "URedisLibrary" });
+    PublicDependencyModuleNames.AddRange(new[] {
+      "Core",
+      "URedisLibrary",
+    });
   }
 }
