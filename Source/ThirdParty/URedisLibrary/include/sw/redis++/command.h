@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_COMMAND_H
-#define SEWENEW_URedis_COMMAND_H
+#ifndef SEWENEW_REDISPLUSPLUS_COMMAND_H
+#define SEWENEW_REDISPLUSPLUS_COMMAND_H
 
 #include <cassert>
 #include <ctime>
@@ -41,6 +41,10 @@ inline void auth(Connection &connection, const StringView &user, const StringVie
     connection.send("AUTH %b %b",
                     user.data(), user.size(),
                     password.data(), password.size());
+}
+
+inline void client_setname(Connection &connection, const StringView &name) {
+    connection.send("CLIENT SETNAME %b", name.data(), name.size());
 }
 
 inline void hello(Connection &connection, long long version) {
@@ -1590,6 +1594,14 @@ inline void publish(Connection &connection,
                     message.data(), message.size());
 }
 
+inline void spublish(Connection &connection,
+                    const StringView &channel,
+                    const StringView &message) {
+    connection.send("SPUBLISH %b %b",
+                    channel.data(), channel.size(),
+                    message.data(), message.size());
+}
+
 inline void punsubscribe(Connection &connection) {
     connection.send("PUNSUBSCRIBE");
 }
@@ -1642,6 +1654,42 @@ inline void unsubscribe_range(Connection &connection, Input first, Input last) {
 
     CmdArgs args;
     args << "UNSUBSCRIBE" << std::make_pair(first, last);
+
+    connection.send(args);
+}
+
+inline void ssubscribe(Connection &connection, const StringView &channel) {
+    connection.send("SSUBSCRIBE %b", channel.data(), channel.size());
+}
+
+template <typename Input>
+inline void ssubscribe_range(Connection &connection, Input first, Input last) {
+    if (first == last) {
+        throw Error("SSUBSCRIBE: no key specified");
+    }
+
+    CmdArgs args;
+    args << "SSUBSCRIBE" << std::make_pair(first, last);
+
+    connection.send(args);
+}
+
+inline void sunsubscribe(Connection &connection) {
+    connection.send("SUNSUBSCRIBE");
+}
+
+inline void sunsubscribe(Connection &connection, const StringView &channel) {
+    connection.send("SUNSUBSCRIBE %b", channel.data(), channel.size());
+}
+
+template <typename Input>
+inline void sunsubscribe_range(Connection &connection, Input first, Input last) {
+    if (first == last) {
+        throw Error("SUNSUBSCRIBE: no key specified");
+    }
+
+    CmdArgs args;
+    args << "SUNSUBSCRIBE" << std::make_pair(first, last);
 
     connection.send(args);
 }
@@ -2299,4 +2347,4 @@ void zunionstore_range(Connection &connection,
 
 }
 
-#endif // end SEWENEW_URedis_COMMAND_H
+#endif // end SEWENEW_REDISPLUSPLUS_COMMAND_H

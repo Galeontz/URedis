@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_COMMAND_OPTIONS_H
-#define SEWENEW_URedis_COMMAND_OPTIONS_H
+#ifndef SEWENEW_REDISPLUSPLUS_COMMAND_OPTIONS_H
+#define SEWENEW_REDISPLUSPLUS_COMMAND_OPTIONS_H
 
 #include <string>
 #include "sw/redis++/utils.h"
@@ -213,4 +213,4 @@ struct WithHash : TupleWithType<long long, T> {};
 
 }
 
-#endif // end SEWENEW_URedis_COMMAND_OPTIONS_H
+#endif // end SEWENEW_REDISPLUSPLUS_COMMAND_OPTIONS_H

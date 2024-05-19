@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_SHARDS_H
-#define SEWENEW_URedis_SHARDS_H
+#ifndef SEWENEW_REDISPLUSPLUS_SHARDS_H
+#define SEWENEW_REDISPLUSPLUS_SHARDS_H
 
 #include <string>
 #include <map>
@@ -108,8 +108,22 @@ public:
     virtual ~AskError() override = default;
 };
 
-}
+class SlotUncoveredError : public Error {
+public:
+    explicit SlotUncoveredError(Slot slot) :
+        Error("slot " + std::to_string(slot) + " is uncovered") {}
+
+    SlotUncoveredError(const SlotUncoveredError &) = default;
+    SlotUncoveredError& operator=(const SlotUncoveredError &) = default;
+
+    SlotUncoveredError(SlotUncoveredError &&) = default;
+    SlotUncoveredError& operator=(SlotUncoveredError &&) = default;
+
+    virtual ~SlotUncoveredError() override = default;
+};
 
 }
 
-#endif // end SEWENEW_URedis_SHARDS_H
+}
+
+#endif // end SEWENEW_REDISPLUSPLUS_SHARDS_H

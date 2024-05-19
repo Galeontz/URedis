@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_CONNECTION_POOL_H
-#define SEWENEW_URedis_CONNECTION_POOL_H
+#ifndef SEWENEW_REDISPLUSPLUS_CONNECTION_POOL_H
+#define SEWENEW_REDISPLUSPLUS_CONNECTION_POOL_H
 
 #include <cassert>
 #include <chrono>
@@ -178,4 +178,4 @@ using GuardedConnectionSPtr = std::shared_ptr<GuardedConnection>;
 
 }
 
-#endif // end SEWENEW_URedis_CONNECTION_POOL_H
+#endif // end SEWENEW_REDISPLUSPLUS_CONNECTION_POOL_H

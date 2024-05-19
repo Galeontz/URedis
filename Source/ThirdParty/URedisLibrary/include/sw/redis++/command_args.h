@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_COMMAND_ARGS_H
-#define SEWENEW_URedis_COMMAND_ARGS_H
+#ifndef SEWENEW_REDISPLUSPLUS_COMMAND_ARGS_H
+#define SEWENEW_REDISPLUSPLUS_COMMAND_ARGS_H
 
 #include <vector>
 #include <list>
@@ -177,4 +177,4 @@ CmdArgs& CmdArgs::_append(std::true_type, const std::pair<Iter, Iter> &range) {
 
 }
 
-#endif // end SEWENEW_URedis_COMMAND_ARGS_H
+#endif // end SEWENEW_REDISPLUSPLUS_COMMAND_ARGS_H

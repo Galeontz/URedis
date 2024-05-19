@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_REDIS_CLUSTER_H
-#define SEWENEW_URedis_REDIS_CLUSTER_H
+#ifndef SEWENEW_REDISPLUSPLUS_REDIS_CLUSTER_H
+#define SEWENEW_REDISPLUSPLUS_REDIS_CLUSTER_H
 
 #include <string>
 #include <chrono>
@@ -47,7 +47,7 @@ class RedisCluster {
 public:
     explicit RedisCluster(const ConnectionOptions &connection_opts,
                     const ConnectionPoolOptions &pool_opts = {},
-                    Role role = Role::MASTER) : _pool(pool_opts, connection_opts, role) {}
+                    Role role = Role::MASTER) : _pool(new ShardsPool(pool_opts, connection_opts, role)) {}
 
     // Construct RedisCluster with URI:
     // "tcp://127.0.0.1" or "tcp://127.0.0.1:6379"
@@ -67,6 +67,18 @@ public:
     Transaction transaction(const StringView &hash_tag, bool piped = false, bool new_connection = true);
 
     Subscriber subscriber();
+
+    Subscriber subscriber(const StringView &hash_tag);
+
+    /// @brief Run the given callback with each node in the cluster.
+    /// The following is the prototype of the callback: void (Redis &r);
+    ///
+    /// Example:
+    /// @code{.cpp}
+    /// cluster.for_each([](Redis &r) { r.ping(); });
+    /// @endcode
+    template <typename Callback>
+    void for_each(Callback &&cb);
 
     template <typename Cmd, typename Key, typename ...Args>
     auto command(Cmd cmd, Key &&key, Args &&...args)
@@ -1056,6 +1068,8 @@ public:
 
     long long publish(const StringView &channel, const StringView &message);
 
+    long long spublish(const StringView &channel, const StringView &message);
+
     // Stream commands.
 
     long long xack(const StringView &key, const StringView &group, const StringView &id);
@@ -1445,7 +1459,7 @@ private:
     template <typename Output, typename Cmd, typename ...Args>
     ReplyUPtr _score_command(Cmd cmd, Args &&... args);
 
-    ShardsPool _pool;
+    ShardsPoolUPtr _pool;
 };
 
 }
@@ -1454,4 +1468,4 @@ private:
 
 #include "sw/redis++/redis_cluster.hpp"
 
-#endif // end SEWENEW_URedis_REDIS_CLUSTER_H
+#endif // end SEWENEW_REDISPLUSPLUS_REDIS_CLUSTER_H

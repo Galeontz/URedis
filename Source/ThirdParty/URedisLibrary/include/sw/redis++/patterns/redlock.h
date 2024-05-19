@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_RECIPES_REDLOCK_H
-#define SEWENEW_URedis_RECIPES_REDLOCK_H
+#ifndef SEWENEW_REDISPLUSPLUS_RECIPES_REDLOCK_H
+#define SEWENEW_REDISPLUSPLUS_RECIPES_REDLOCK_H
 
 #include <cassert>
 #include <random>
@@ -588,17 +588,17 @@ private:
 
     void _reschedule_tasks(std::vector<Task> &tasks);
 
-    std::thread _watcher_thread;
-
     std::priority_queue<Task> _tasks;
 
     std::mutex _mtx;
 
     std::condition_variable _cv;
+
+    std::thread _watcher_thread;
 };
 
 }
 
 }
 
-#endif // end SEWENEW_URedis_RECIPES_REDLOCK_H
+#endif // end SEWENEW_REDISPLUSPLUS_RECIPES_REDLOCK_H

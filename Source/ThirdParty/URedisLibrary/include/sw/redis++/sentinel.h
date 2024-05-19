@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_SENTINEL_H
-#define SEWENEW_URedis_SENTINEL_H
+#ifndef SEWENEW_REDISPLUSPLUS_SENTINEL_H
+#define SEWENEW_REDISPLUSPLUS_SENTINEL_H
 
 #include <string>
 #include <list>
@@ -145,4 +145,4 @@ private:
 
 }
 
-#endif // end SEWENEW_URedis_SENTINEL_H
+#endif // end SEWENEW_REDISPLUSPLUS_SENTINEL_H

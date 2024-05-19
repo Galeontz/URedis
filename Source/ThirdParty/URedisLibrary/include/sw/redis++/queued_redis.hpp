@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_QUEUED_REDIS_HPP
-#define SEWENEW_URedis_QUEUED_REDIS_HPP
+#ifndef SEWENEW_REDISPLUSPLUS_QUEUED_REDIS_HPP
+#define SEWENEW_REDISPLUSPLUS_QUEUED_REDIS_HPP
 
 namespace sw {
 
@@ -266,4 +266,4 @@ inline void QueuedReplies::_index_check(std::size_t idx) const {
 
 }
 
-#endif // end SEWENEW_URedis_QUEUED_REDIS_HPP
+#endif // end SEWENEW_REDISPLUSPLUS_QUEUED_REDIS_HPP

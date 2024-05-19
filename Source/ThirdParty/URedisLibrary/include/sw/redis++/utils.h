@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_UTILS_H
-#define SEWENEW_URedis_UTILS_H
+#ifndef SEWENEW_REDISPLUSPLUS_UTILS_H
+#define SEWENEW_REDISPLUSPLUS_UTILS_H
 
 #include <cstdint>
 #include <cstring>
@@ -191,4 +191,4 @@ uint16_t crc16(const char *buf, int len);
 
 }
 
-#endif // end SEWENEW_URedis_UTILS_H
+#endif // end SEWENEW_REDISPLUSPLUS_UTILS_H

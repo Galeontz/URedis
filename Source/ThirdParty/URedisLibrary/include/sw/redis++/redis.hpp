@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_REDIS_HPP
-#define SEWENEW_URedis_REDIS_HPP
+#ifndef SEWENEW_REDISPLUSPLUS_REDIS_HPP
+#define SEWENEW_REDISPLUSPLUS_REDIS_HPP
 
 #include "sw/redis++/command.h"
 #include "sw/redis++/reply.h"
@@ -1339,4 +1339,4 @@ inline ReplyUPtr Redis::_score_command(Cmd cmd, Args &&... args) {
 
 }
 
-#endif // end SEWENEW_URedis_REDIS_HPP
+#endif // end SEWENEW_REDISPLUSPLUS_REDIS_HPP

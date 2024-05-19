@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_REDIS_CLUSTER_HPP
-#define SEWENEW_URedis_REDIS_CLUSTER_HPP
+#ifndef SEWENEW_REDISPLUSPLUS_REDIS_CLUSTER_HPP
+#define SEWENEW_REDISPLUSPLUS_REDIS_CLUSTER_HPP
 
 #include <utility>
 #include "sw/redis++/command.h"
@@ -27,6 +27,20 @@
 namespace sw {
 
 namespace redis {
+
+template <typename Callback>
+void RedisCluster::for_each(Callback &&cb) {
+    // Update the underlying slot-node mapping to ensure we get the latest one.
+    _pool->update();
+
+    auto pools = _pool->pools();
+    for (auto &pool : pools) {
+        auto connection = std::make_shared<GuardedConnection>(pool);
+        auto r = Redis(connection);
+
+        cb(r);
+    }
+}
 
 template <typename Cmd, typename Key, typename ...Args>
 auto RedisCluster::command(Cmd cmd, Key &&key, Args &&...args)
@@ -1332,29 +1346,34 @@ template <typename Cmd, typename ...Args>
 ReplyUPtr RedisCluster::_command(Cmd cmd, const StringView &key, Args &&...args) {
     for (auto idx = 0; idx < 2; ++idx) {
         try {
-            auto pool = _pool.fetch(key);
+            auto pool = _pool->fetch(key);
             assert(pool);
             SafeConnection safe_connection(*pool);
 
             return _command(cmd, safe_connection.connection(), std::forward<Args>(args)...);
+        } catch (const SlotUncoveredError &) {
+            // Some slot is not covered, update asynchronously to see if new node added.
+            // Check https://github.com/sewenew/redis-plus-plus/issues/255 for detail.
+            // TODO: should we replace other 'update's with 'async_update's?
+            _pool->async_update();
         } catch (const IoError &) {
             // When master is down, one of its replicas will be promoted to be the new master.
             // If we try to send command to the old master, we'll get an *IoError*.
             // In this case, we need to update the slots mapping.
-            _pool.update();
+            _pool->update();
         } catch (const ClosedError &) {
             // Node might be removed.
             // 1. Get up-to-date slot mapping to check if the node still exists.
-            _pool.update();
+            _pool->update();
 
             // TODO:
             // 2. If it's NOT exist, update slot mapping, and retry.
             // 3. If it's still exist, that means the node is down, NOT removed, throw exception.
         } catch (const MovedError &) {
             // Slot mapping has been changed, update it and try again.
-            _pool.update();
+            _pool->update();
         } catch (const AskError &err) {
-            auto pool = _pool.fetch(err.node());
+            auto pool = _pool->fetch(err.node());
             assert(pool);
             SafeConnection safe_connection(*pool);
             auto &connection = safe_connection.connection();
@@ -1401,4 +1420,4 @@ inline ReplyUPtr RedisCluster::_score_command(Cmd cmd, Args &&... args) {
 
 }
 
-#endif // end SEWENEW_URedis_REDIS_CLUSTER_HPP
+#endif // end SEWENEW_REDISPLUSPLUS_REDIS_CLUSTER_HPP

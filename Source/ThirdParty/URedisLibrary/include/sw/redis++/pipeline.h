@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_PIPELINE_H
-#define SEWENEW_URedis_PIPELINE_H
+#ifndef SEWENEW_REDISPLUSPLUS_PIPELINE_H
+#define SEWENEW_REDISPLUSPLUS_PIPELINE_H
 
 #include <cassert>
 #include <vector>
@@ -46,4 +46,4 @@ public:
 
 }
 
-#endif // end SEWENEW_URedis_PIPELINE_H
+#endif // end SEWENEW_REDISPLUSPLUS_PIPELINE_H

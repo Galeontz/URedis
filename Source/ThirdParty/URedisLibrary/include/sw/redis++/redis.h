@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_REDIS_H
-#define SEWENEW_URedis_REDIS_H
+#ifndef SEWENEW_REDISPLUSPLUS_REDIS_H
+#define SEWENEW_REDISPLUSPLUS_REDIS_H
 
 #include <string>
 #include <chrono>
@@ -3252,6 +3252,8 @@ public:
 
     long long publish(const StringView &channel, const StringView &message);
 
+    long long spublish(const StringView &channel, const StringView &message);
+
     // Transaction commands.
     void watch(const StringView &key);
 
@@ -3638,4 +3640,4 @@ private:
 
 #include "sw/redis++/redis.hpp"
 
-#endif // end SEWENEW_URedis_REDIS_H
+#endif // end SEWENEW_REDISPLUSPLUS_REDIS_H

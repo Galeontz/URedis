@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_NO_TLS_H
-#define SEWENEW_URedis_NO_TLS_H
+#ifndef SEWENEW_REDISPLUSPLUS_NO_TLS_H
+#define SEWENEW_REDISPLUSPLUS_NO_TLS_H
 
 #include <hiredis/hiredis.h>
 
@@ -44,4 +44,4 @@ inline bool enabled(const TlsOptions &/*opts*/) {
 
 }
 
-#endif // end SEWENEW_URedis_NO_TLS_H
+#endif // end SEWENEW_REDISPLUSPLUS_NO_TLS_H

@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_REPLY_H
-#define SEWENEW_URedis_REPLY_H
+#ifndef SEWENEW_REDISPLUSPLUS_REPLY_H
+#define SEWENEW_REDISPLUSPLUS_REPLY_H
 
 #include <cassert>
 #include <string>
@@ -525,4 +525,4 @@ auto parse_xpending_reply(redisReply &reply, Output output)
 
 }
 
-#endif // end SEWENEW_URedis_REPLY_H
+#endif // end SEWENEW_REDISPLUSPLUS_REPLY_H

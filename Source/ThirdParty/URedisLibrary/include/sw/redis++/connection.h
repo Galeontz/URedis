@@ -14,8 +14,8 @@
    limitations under the License.
  *************************************************************************/
 
-#ifndef SEWENEW_URedis_CONNECTION_H
-#define SEWENEW_URedis_CONNECTION_H
+#ifndef SEWENEW_REDISPLUSPLUS_CONNECTION_H
+#define SEWENEW_REDISPLUSPLUS_CONNECTION_H
 
 #include <cassert>
 #include <cerrno>
@@ -86,6 +86,8 @@ struct ConnectionOptions {
 
     // RESP version.
     int resp = 2;
+
+    std::string name;
 
     // For internal use, and might be removed in the future. DO NOT use it in client code.
     std::string _server_info() const;
@@ -176,6 +178,8 @@ private:
 
     void _auth();
 
+    void _set_name();
+
     void _select_db();
 
     void _enable_readonly();
@@ -233,4 +237,4 @@ inline redisContext* Connection::_context() {
 
 }
 
-#endif // end SEWENEW_URedis_CONNECTION_H
+#endif // end SEWENEW_REDISPLUSPLUS_CONNECTION_H
