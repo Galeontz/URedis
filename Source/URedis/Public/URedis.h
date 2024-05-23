@@ -7,7 +7,7 @@
 
 // Forward declare private type in the public header
 namespace sw::redis {
-class Redis;
+    class Redis;
 }
 
 class UREDIS_API FURedis final : public IModuleInterface {
@@ -18,6 +18,10 @@ public:
     void Connect(const FStringView host, int32 port = 6379);
 
     FString Ping(TOptional<FString> message = NullOpt) const;
+
+    bool Set(FStringView key, FStringView value) const;
+
+    TOptional<FString> Get(FStringView key) const;
 
 private:
     TUniquePtr<sw::redis::Redis> _instance{};

@@ -38,4 +38,21 @@ FString FURedis::Ping(TOptional<FString> message) const {
     return UTF8_TO_TCHAR(reply.c_str());
 }
 
+bool FURedis::Set(FStringView key, FStringView value) const {
+    check(_instance);
+    bool result;
+    result = _instance->set(TCHAR_TO_UTF8(key.GetData()),
+                            TCHAR_TO_UTF8(value.GetData()));
+    return result;
+}
+
+TOptional<FString> FURedis::Get(FStringView key) const {
+    check(_instance);
+    auto result = _instance->get(TCHAR_TO_UTF8(key.GetData()));
+
+    if (!result) return TOptional<FString>();
+
+    return TOptional<FString>(UTF8_TO_TCHAR(result.value().c_str()));
+}
+
 IMPLEMENT_MODULE(FURedis, URedis);
