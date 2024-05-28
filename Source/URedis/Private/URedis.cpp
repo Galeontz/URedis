@@ -39,18 +39,24 @@ FString FURedis::Ping(TOptional<FString> message) const {
 }
 
 bool FURedis::Set(FStringView key, FStringView value) const {
-    check(_instance);
-    bool result;
-    result = _instance->set(TCHAR_TO_UTF8(key.GetData()),
-                            TCHAR_TO_UTF8(value.GetData()));
-    return result;
+    if (!_instance.IsValid()) {
+        return false;
+    }
+
+    return _instance->set(TCHAR_TO_UTF8(key.GetData()),
+                          TCHAR_TO_UTF8(value.GetData()));
 }
 
 TOptional<FString> FURedis::Get(FStringView key) const {
-    check(_instance);
+    if (!_instance.IsValid()) {
+        return TOptional<FString>();
+    }
+
     auto result = _instance->get(TCHAR_TO_UTF8(key.GetData()));
 
-    if (!result) return TOptional<FString>();
+    if (!result) {
+        return TOptional<FString>();
+    }
 
     return TOptional<FString>(UTF8_TO_TCHAR(result.value().c_str()));
 }
