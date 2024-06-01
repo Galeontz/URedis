@@ -24,11 +24,10 @@ void FURedis::Connect(const FStringView host, const int32 port) {
     opts.host = TCHAR_TO_UTF8(host.GetData());
     opts.port = port;
     _instance = MakeUnique<sw::redis::Redis>(opts);
-    check(_instance);
+    check(Ping() == "PONG");
 }
 
 FString FURedis::Ping(TOptional<FString> message) const {
-    check(_instance);
     std::string reply{};
     if (message) {
         reply = _instance->echo(TCHAR_TO_UTF8(**message));
@@ -44,13 +43,22 @@ bool FURedis::Set(FStringView key, FStringView value) const {
 }
 
 TOptional<FString> FURedis::Get(FStringView key) const {
-    auto result = _instance->get(TCHAR_TO_UTF8(key.GetData()));
+    auto result{_instance->get(TCHAR_TO_UTF8(key.GetData()))};
 
     if (!result) {
-        return TOptional<FString>();
+        return NullOpt;
     }
 
-    return TOptional<FString>(UTF8_TO_TCHAR(result.value().c_str()));
+    return {UTF8_TO_TCHAR(result->c_str())};
+}
+
+uint64 FURedis::Del(FStringView key) const {
+    return _instance->del(TCHAR_TO_UTF8(key.GetData()));
+}
+
+void FURedis::Rename(FStringView key, FStringView newKey) const {
+    _instance->rename(TCHAR_TO_UTF8(key.GetData()),
+                      TCHAR_TO_UTF8(newKey.GetData()));
 }
 
 IMPLEMENT_MODULE(FURedis, URedis);
