@@ -61,4 +61,26 @@ void FURedis::Rename(FStringView key, FStringView newKey) const {
                       TCHAR_TO_UTF8(newKey.GetData()));
 }
 
+#pragma region Pub/Sub
+
+uint64 FURedis::Publish(FStringView channel, FStringView message) const {
+    return _instance->publish(TCHAR_TO_UTF8(channel.GetData()),
+                              TCHAR_TO_UTF8(message.GetData()));
+}
+
+void FURedis::Subscribe(FStringView channel,
+                        void (*MsgCallback)(FStringView channel,
+                                            FStringView message)) {
+    _instance->subscriber().subscribe(TCHAR_TO_UTF8(channel.GetData()));
+    _instance->subscriber().on_message(MsgCallback);
+}
+
+void FURedis::Unsubscribe() const { _instance->subscriber().unsubscribe(); }
+
+void FURedis::Unsubscribe(FStringView channel) const {
+    _instance->subscriber().unsubscribe(TCHAR_TO_UTF8(channel.GetData()));
+}
+
+#pragma endregion
+
 IMPLEMENT_MODULE(FURedis, URedis);
