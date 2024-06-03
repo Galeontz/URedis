@@ -69,7 +69,8 @@ uint64 FURedis::Publish(FStringView channel, FStringView message) const {
 }
 
 void FURedis::Subscribe(FStringView channel,
-               void (*MsgCallback)(FStringView channel, FStringView message)) {
+                        void (*MsgCallback)(FStringView channel,
+                                            FStringView message)) {
     _instance->subscriber().subscribe(TCHAR_TO_UTF8(channel.GetData()));
     _instance->subscriber().on_message(MsgCallback);
 }
