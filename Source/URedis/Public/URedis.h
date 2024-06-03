@@ -73,6 +73,19 @@ public:
      */
     void Rename(FStringView key, FStringView newKey) const;
 
+#pragma region Pub/Sub
+
+    uint64 Publish(FStringView channel, FStringView message) const;
+
+    void Subscribe(FStringView channel,
+                   void (*Callback)(FStringView channel, FStringView message));
+
+    void Unsubscribe() const;
+
+    void Unsubscribe(FStringView channel) const;
+
+#pragma endregion
+
 private:
     TUniquePtr<sw::redis::Redis> _instance{};
 };
