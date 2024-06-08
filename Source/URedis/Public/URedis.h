@@ -73,6 +73,27 @@ public:
      */
     void Rename(FStringView key, FStringView newKey) const;
 
+#pragma region Geospatial functions
+
+    uint64 GeoAdd(FStringView key,
+                  TTuple<FStringView, double, double> geoData) const;
+
+    TOptional<double> GeoDistance(FStringView key, FStringView member1,
+                                  FStringView member2) const;
+
+    TOptional<TPair<double, double>> GeoPosition(FStringView key,
+                                                 FStringView member) const;
+
+    TOptional<uint64> GeoRadius(FStringView key, TPair<double, double> location,
+                                double radius, FStringView destination,
+                                bool store_dist, uint64 count) const;
+
+    TOptional<uint64> GeoRadiusByMember(FStringView key, FStringView member,
+                                double radius, FStringView destination,
+                                bool store_dist, uint64 count) const;
+
+#pragma endregion
+
 private:
     TUniquePtr<sw::redis::Redis> _instance{};
 };

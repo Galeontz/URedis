@@ -61,4 +61,47 @@ void FURedis::Rename(FStringView key, FStringView newKey) const {
                       TCHAR_TO_UTF8(newKey.GetData()));
 }
 
+#pragma region Geostapial functions
+
+uint64 FURedis::GeoAdd(FStringView key,
+                       TTuple<FStringView, double, double> geoData) const {
+    const auto &member = geoData.Get<0>();
+    const auto longitude = geoData.Get<1>();
+    const auto latitude = geoData.Get<2>();
+
+    const auto convertedGeoData =
+        std::tuple<sw::redis::StringView, double, double>(
+            TCHAR_TO_UTF8(member.GetData()), longitude, latitude);
+
+    return _instance->geoadd(TCHAR_TO_UTF8(key.GetData()), convertedGeoData);
+}
+
+TOptional<double> FURedis::GeoDistance(FStringView key, FStringView member1,
+                                       FStringView member2) const {
+    auto result{_instance->geodist(TCHAR_TO_UTF8(key.GetData()),
+                                   TCHAR_TO_UTF8(member1.GetData()),
+                                   TCHAR_TO_UTF8(member2.GetData()))};
+
+    if (!result) {
+        return NullOpt;
+    }
+
+    return {result.value()};
+}
+
+TOptional<TPair<double, double>> FURedis::GeoPosition(
+    FStringView key, FStringView member) const {
+    auto result{_instance->geopos(TCHAR_TO_UTF8(key.GetData()),
+                                  TCHAR_TO_UTF8(member.GetData()))};
+
+    if (!result) {
+        return NullOpt;
+    }
+
+    return TOptional<TPair<double, double>>(
+        TPair<double, double>(result.value().first, result.value().second));
+}
+
+#pragma endregion
+
 IMPLEMENT_MODULE(FURedis, URedis);
