@@ -89,8 +89,8 @@ public:
                                 bool store_dist, uint64 count) const;
 
     TOptional<uint64> GeoRadiusByMember(FStringView key, FStringView member,
-                                double radius, FStringView destination,
-                                bool store_dist, uint64 count) const;
+                                        double radius, FStringView destination,
+                                        bool store_dist, uint64 count) const;
 
 #pragma endregion
 
