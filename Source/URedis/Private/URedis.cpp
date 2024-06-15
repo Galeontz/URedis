@@ -77,10 +77,11 @@ uint64 FURedis::GeoAdd(FStringView key,
 }
 
 TOptional<double> FURedis::GeoDistance(FStringView key, FStringView member1,
-                                       FStringView member2) const {
-    auto result{_instance->geodist(TCHAR_TO_UTF8(key.GetData()),
-                                   TCHAR_TO_UTF8(member1.GetData()),
-                                   TCHAR_TO_UTF8(member2.GetData()))};
+                                       FStringView member2,
+                                       GeoUnit unit) const {
+    auto result{_instance->geodist(
+        TCHAR_TO_UTF8(key.GetData()), TCHAR_TO_UTF8(member1.GetData()),
+        TCHAR_TO_UTF8(member2.GetData()), (sw::redis::GeoUnit)unit)};
 
     if (!result) {
         return NullOpt;
@@ -100,6 +101,39 @@ TOptional<TPair<double, double>> FURedis::GeoPosition(
 
     return TOptional<TPair<double, double>>(
         TPair<double, double>(result.value().first, result.value().second));
+}
+
+TOptional<uint64> FURedis::GeoRadius(FStringView key,
+                                     TPair<double, double> location,
+                                     double radius, GeoUnit unit,
+                                     FStringView destination, bool store_dist,
+                                     uint64 count) const {
+    auto result{_instance->georadius(
+        TCHAR_TO_UTF8(key.GetData()),
+        std::pair<double, double>(location.Key, location.Value), radius,
+        (sw::redis::GeoUnit)unit, TCHAR_TO_UTF8(destination.GetData()),
+        store_dist, count)};
+
+    if (!result) {
+        return NullOpt;
+    }
+
+    return TOptional<uint64>(result.value());
+}
+
+TOptional<uint64> FURedis::GeoRadiusByMember(
+    FStringView key, FStringView member, double radius, GeoUnit unit,
+    FStringView destination, bool store_dist, uint64 count) const {
+    auto result{_instance->georadiusbymember(
+        TCHAR_TO_UTF8(key.GetData()), TCHAR_TO_UTF8(member.GetData()), radius,
+        (sw::redis::GeoUnit)unit, TCHAR_TO_UTF8(destination.GetData()),
+        store_dist, count)};
+
+    if (!result) {
+        return NullOpt;
+    }
+
+    return TOptional<uint64>(result.value());
 }
 
 #pragma endregion
