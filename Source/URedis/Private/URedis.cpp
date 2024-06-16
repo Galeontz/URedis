@@ -37,13 +37,13 @@ FString FURedis::Ping(TOptional<FString> message) const {
     return UTF8_TO_TCHAR(reply.c_str());
 }
 
-bool FURedis::Set(FStringView key, FStringView value) const {
+bool FURedis::Set(const FStringView key, const FStringView value) const {
     return _instance->set(TCHAR_TO_UTF8(key.GetData()),
                           TCHAR_TO_UTF8(value.GetData()));
 }
 
-TOptional<FString> FURedis::Get(FStringView key) const {
-    auto result{_instance->get(TCHAR_TO_UTF8(key.GetData()))};
+TOptional<FString> FURedis::Get(const FStringView key) const {
+    const auto result{_instance->get(TCHAR_TO_UTF8(key.GetData()))};
 
     if (!result) {
         return NullOpt;
@@ -52,18 +52,18 @@ TOptional<FString> FURedis::Get(FStringView key) const {
     return {UTF8_TO_TCHAR(result->c_str())};
 }
 
-uint64 FURedis::Del(FStringView key) const {
+uint64 FURedis::Del(const FStringView key) const {
     return _instance->del(TCHAR_TO_UTF8(key.GetData()));
 }
 
-void FURedis::Rename(FStringView key, FStringView newKey) const {
+void FURedis::Rename(const FStringView key, const FStringView newKey) const {
     _instance->rename(TCHAR_TO_UTF8(key.GetData()),
                       TCHAR_TO_UTF8(newKey.GetData()));
 }
 
 #pragma region Geostapial functions
 
-uint64 FURedis::GeoAdd(FStringView key,
+uint64 FURedis::GeoAdd(const FStringView key,
                        TTuple<FStringView, double, double> geoData) const {
     const auto &member = geoData.Get<0>();
     const auto longitude = geoData.Get<1>();
@@ -76,64 +76,66 @@ uint64 FURedis::GeoAdd(FStringView key,
     return _instance->geoadd(TCHAR_TO_UTF8(key.GetData()), convertedGeoData);
 }
 
-TOptional<double> FURedis::GeoDistance(FStringView key, FStringView member1,
-                                       FStringView member2,
-                                       GeoUnit unit) const {
-    auto result{_instance->geodist(
+TOptional<double> FURedis::GeoDistance(const FStringView key,
+                                       const FStringView member1,
+                                       const FStringView member2,
+                                       const GeoUnit unit) const {
+    const auto result{_instance->geodist(
         TCHAR_TO_UTF8(key.GetData()), TCHAR_TO_UTF8(member1.GetData()),
-        TCHAR_TO_UTF8(member2.GetData()), (sw::redis::GeoUnit)unit)};
+        TCHAR_TO_UTF8(member2.GetData()),
+        static_cast<sw::redis::GeoUnit>(unit))};
 
     if (!result) {
         return NullOpt;
     }
 
-    return {result.value()};
+    return *result;
 }
 
 TOptional<TPair<double, double>> FURedis::GeoPosition(
-    FStringView key, FStringView member) const {
-    auto result{_instance->geopos(TCHAR_TO_UTF8(key.GetData()),
-                                  TCHAR_TO_UTF8(member.GetData()))};
+    const FStringView key, const FStringView member) const {
+    const auto result{_instance->geopos(TCHAR_TO_UTF8(key.GetData()),
+                                        TCHAR_TO_UTF8(member.GetData()))};
 
     if (!result) {
         return NullOpt;
     }
 
-    return TOptional<TPair<double, double>>(
-        TPair<double, double>(result.value().first, result.value().second));
+    return TPair<double, double>(result->first, result->second);
 }
 
-TOptional<uint64> FURedis::GeoRadius(FStringView key,
-                                     TPair<double, double> location,
-                                     double radius, GeoUnit unit,
-                                     FStringView destination, bool store_dist,
-                                     uint64 count) const {
-    auto result{_instance->georadius(
-        TCHAR_TO_UTF8(key.GetData()),
-        std::pair<double, double>(location.Key, location.Value), radius,
-        (sw::redis::GeoUnit)unit, TCHAR_TO_UTF8(destination.GetData()),
-        store_dist, count)};
+TOptional<uint64> FURedis::GeoRadius(const FStringView key,
+                                     const TPair<double, double> location,
+                                     const double radius, const GeoUnit unit,
+                                     const FStringView destination,
+                                     const bool storeDist,
+                                     const uint64 count) const {
+    const auto result{_instance->georadius(
+        TCHAR_TO_UTF8(key.GetData()), std::pair(location.Key, location.Value),
+        radius, static_cast<sw::redis::GeoUnit>(unit),
+        TCHAR_TO_UTF8(destination.GetData()), storeDist, count)};
 
     if (!result) {
         return NullOpt;
     }
 
-    return TOptional<uint64>(result.value());
+    return *result;
 }
 
 TOptional<uint64> FURedis::GeoRadiusByMember(
-    FStringView key, FStringView member, double radius, GeoUnit unit,
-    FStringView destination, bool store_dist, uint64 count) const {
-    auto result{_instance->georadiusbymember(
+    const FStringView key, const FStringView member, const double radius,
+    const GeoUnit unit, const FStringView destination, const bool storeDist,
+    const uint64 count) const {
+    const auto result{_instance->georadiusbymember(
         TCHAR_TO_UTF8(key.GetData()), TCHAR_TO_UTF8(member.GetData()), radius,
-        (sw::redis::GeoUnit)unit, TCHAR_TO_UTF8(destination.GetData()),
-        store_dist, count)};
+        static_cast<sw::redis::GeoUnit>(unit),
+        TCHAR_TO_UTF8(destination.GetData()), storeDist, count)};
 
     if (!result) {
         return NullOpt;
     }
 
-    return TOptional<uint64>(result.value());
+    return *result;
 }
 
 #pragma endregion

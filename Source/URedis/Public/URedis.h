@@ -170,7 +170,7 @@ public:
      * @param destination The key where the results will be stored. This
      * parameter is a constant reference to an FStringView object representing
      * the destination key.
-     * @param store_dist A boolean flag indicating whether to store the
+     * @param storeDist A boolean flag indicating whether to store the
      * distances from the central point to each member.
      * @param count The maximum number of members to return.
      * @return An optional containing the number of members found within the
@@ -178,7 +178,7 @@ public:
      */
     TOptional<uint64> GeoRadius(FStringView key, TPair<double, double> location,
                                 double radius, GeoUnit unit,
-                                FStringView destination, bool store_dist,
+                                FStringView destination, bool storeDist,
                                 uint64 count) const;
 
     /**
@@ -202,7 +202,7 @@ public:
      * @param destination The key where the results will be stored. This
      * parameter is a constant reference to an FStringView object representing
      * the destination key.
-     * @param store_dist A boolean flag indicating whether to store the
+     * @param storeDist A boolean flag indicating whether to store the
      * distances from the specified member to each found member.
      * @param count The maximum number of members to return.
      * @return An optional containing the number of members found within the
@@ -210,8 +210,8 @@ public:
      */
     TOptional<uint64> GeoRadiusByMember(FStringView key, FStringView member,
                                         double radius, GeoUnit unit,
-                                        FStringView destination,
-                                        bool store_dist, uint64 count) const;
+                                        FStringView destination, bool storeDist,
+                                        uint64 count) const;
 
 #pragma endregion
 
