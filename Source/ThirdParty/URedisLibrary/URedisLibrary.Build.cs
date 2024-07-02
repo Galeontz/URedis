@@ -20,12 +20,13 @@ public class URedisLibrary : ModuleRules {
     } else if (target.Platform == UnrealTargetPlatform.Mac) {
       // hiredis
       var path =
-          Path.Combine(ModuleDirectory, "mac", "arm64", "libredis++.dylib");
+          Path.Combine(ModuleDirectory, "mac", "arm64", "libredis++.1.dylib");
       PublicAdditionalLibraries.Add(path);
       RuntimeDependencies.Add(path);
 
       // redis++
-      path = Path.Combine(ModuleDirectory, "mac", "arm64", "libhiredis.dylib");
+      path = Path.Combine(ModuleDirectory, "mac", "arm64",
+                          "libhiredis.1.1.0.dylib");
       PublicAdditionalLibraries.Add(path);
       RuntimeDependencies.Add(path);
     } else if (target.Platform == UnrealTargetPlatform.Win64) {
