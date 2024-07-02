@@ -12,7 +12,7 @@ The version used are:
 - redis-plus-plus: 1.3.10
 - hiredis: v1.2.0
 
-## Linux Compilation
+## Linux & macOS compilation
 
 Refer to: https://pgaleone.eu/2023/06/18/unreal-engine-third-party-linux-sysroot-dependencies/
 
@@ -39,6 +39,7 @@ cd redis-plus-plus
 git checkout 1.3.10
 mkdir build
 
+# This is needed only for the linux compilation, skip it for macOS
 cat <<EOF > UEToolchain.cmake.sh
 set(ENGINE "/home/pgaleone/ue/engine/")
 
@@ -52,9 +53,9 @@ EOF
 
 cd build
 cmake -DCMAKE_TOOLCHAIN_FILE=../UEToolchain.cmake -DREDIS_PLUS_PLUS_BUILD_TEST=OFF ..
+# for macos: cmake -DCMAKE_PREFIX_PATH=/tmp/hr/usr/local/ -DREDIS_PLUS_PLUS_BUILD_TEST=OFF ..
 make -j$(nproc)
 mkdir /tmp/rd
 make DESTDIR=/tmp/rd install
 ```
 
-In the DESTDIR folders you'll find the headers and libraries ready to be copied in the plugin.
